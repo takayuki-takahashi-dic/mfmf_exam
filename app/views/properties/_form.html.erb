@@ -22,7 +22,7 @@
   <%= form.label :note ,class: "control-label" %>
   <%= form.text_area :note ,class: "form-control" ,placeholder:"note" %>
 
-    <%= form.fields_for :stations do |s| %>
+    <%= form.fields_for :stations, @property.stations.build do |s| %>
       <%= s.label :route ,class: "control-label" %>
       <%= s.text_field :route %>
       <%= s.label :name ,class: "control-label" %>
