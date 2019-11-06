@@ -21,6 +21,7 @@
         <td><%= property.address %></td>
         <td><%= property.age %></td>
         <td><%= property.note %></td>
+        <td><%= property.id %></td>
 
 
         <td><%= link_to '詳細', property %></td>
@@ -34,3 +35,27 @@
 <br>
 
 <%= link_to '物件を登録する', new_property_path %>
+
+<h1>stations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>route</th>
+      <th>name</th>
+      <th>time_needed</th>
+      <th>property_id</th>
+    </tr>
+  </  thead>
+
+  <tbody>
+    <% @stations.each do |station| %>
+      <tr>
+        <td><%= station.route %></td>
+        <td><%= station.name %></td>
+        <td><%= station.time_needed %></td>
+        <td><%= station.property_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

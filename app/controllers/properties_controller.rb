@@ -3,12 +3,13 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all
+    @stations = Station.all
+
   end
 
   def new
     @property = Property.new
-    2.times {@property.stations.build}
-
+    2.times {@property.stations.build} #n個のフォームを生成
   end
 
   def show
@@ -52,7 +53,7 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: [:id, :route, :name, :time_needed])
+    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: [:id, :route, :name, :time_needed, :_destroy])
   end
   def set_property
     @property = Property.find(params[:id])
