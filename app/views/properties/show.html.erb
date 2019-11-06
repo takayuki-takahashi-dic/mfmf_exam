@@ -8,6 +8,38 @@
       <td><%= @property.note %></td>
       <tr>
 
+        <p>
+          <strong>路線名 :</strong>
+          <%= @property.stations.first.route %>
+        </p>
+
+        <p>
+          <strong>駅名 :</strong>
+          <%= @property.stations.first.name %>
+        </p>
+
+        <p>
+          <strong>徒歩分数 :</strong>
+          <%= "#{@property.stations.first.time_needed}分" %>
+        </p>
+
+        <br>
+
+        <p>
+          <strong>路線名 :</strong>
+          <%= @property.stations.second.route %>
+        </p>
+
+        <p>
+          <strong>駅名 :</strong>
+          <%= @property.stations.second.name %>
+        </p>
+
+        <p>
+          <strong>徒歩分数 :</strong>
+          <%= "#{@property.stations.second.time_needed}分" %>
+        </p>
+
 
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>

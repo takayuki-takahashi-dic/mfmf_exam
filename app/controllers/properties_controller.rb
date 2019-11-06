@@ -7,7 +7,8 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    @property.stations.build
+    2.times {@property.stations.build}
+
   end
 
   def show
@@ -26,7 +27,6 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-    @staion = @property.stations.build
     if params[:back]
       render :new
     else
@@ -45,7 +45,7 @@ class PropertiesController < ApplicationController
 
   def confirm
     @property = Property.new(property_params)
-    @staion = @property.stations.build
+    @property.stations.build
     render :new if @property.invalid?
   end
 
