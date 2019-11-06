@@ -1,0 +1,23 @@
+          <h3>以下の内容で送信する</h3>
+
+          <%= form_for @property do |form| %>
+
+          <%= form.hidden_field :name %>
+          <p>name:<%= @property.name %></p>
+
+          <%= form.hidden_field :rent %>
+          <p>rent:<%= @property.rent %></p>
+
+          <%= form.hidden_field :address %>
+          <p>address:<%= @property.address %></p>
+
+          <%= form.hidden_field :age %>
+          <p>age:<%= @property.age %></p>
+
+          <%= form.hidden_field :note %>
+          <p>note:<%= @property.note %></p>
+
+
+        <%= form.submit "投稿",class: "btn btn-info" %>
+        <%= form.submit "戻る",class: "btn btn-info" , name: 'back' %>
+      <% end %>

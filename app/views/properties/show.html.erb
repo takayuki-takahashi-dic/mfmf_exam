@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+    <tr>
+      <td><%= @property.name %></td>
+      <td><%= @property.rent %></td>
+      <td><%= @property.address %></td>
+      <td><%= @property.age %></td>
+      <td><%= @property.note %></td>
+      <tr>
+
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
