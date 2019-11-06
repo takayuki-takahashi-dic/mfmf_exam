@@ -6,8 +6,8 @@ class PropertiesController < ApplicationController
   end
 
   def new
-    # 追記する
     @property = Property.new
+    @property.stations.build
   end
 
   def show
@@ -26,6 +26,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    @property.stations.build
     if params[:back]
       render :new
     else
@@ -44,15 +45,15 @@ class PropertiesController < ApplicationController
 
   def confirm
     @property = Property.new(property_params)
+    @property.stations.build
     render :new if @property.invalid?
   end
 
   private
 
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :note)
+    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: [:route, :name, :time_needed])
   end
-
   def set_property
     @property = Property.find(params[:id])
   end
