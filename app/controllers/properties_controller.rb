@@ -16,6 +16,7 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    @property.stations.build
   end
 
   def update
@@ -44,12 +45,6 @@ class PropertiesController < ApplicationController
     redirect_to properties_path, danger:"削除しました！"
   end
 
-  def confirm
-    @property = Property.new(property_params)
-    @property.stations.build
-    render :new if @property.invalid?
-  end
-
   private
 
   def property_params
@@ -59,11 +54,5 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
-  def reject_stations(attributes)
-    exists = attributes[:id].present?
-    empty = attributes[:route].blank?
-    attributes.merge!(_destroy: 1) if exists && empty
-    !exists && empty
-  end
 
 end

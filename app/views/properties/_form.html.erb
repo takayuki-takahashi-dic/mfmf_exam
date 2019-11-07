@@ -1,4 +1,3 @@
-
   <% if property.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(property.errors.count, "") %> 件のエラーがあります。</h2>
@@ -10,34 +9,37 @@
     </div>
   <% end %>
 
+<div class="property">
 <%= form_for @property do |form| %>
-  <%= form.label :name ,class: "control-label" %><br>
-  <%= form.text_field :name ,class: "form-control" ,placeholder:"name" %><br>
-  <%= form.label :rent ,class: "control-label" %><br>
-  <%= form.number_field :rent ,class: "form-control" %> 円 <br>
-  <%= form.label :address ,class: "control-label" %><br>
-  <%= form.text_field :address ,class: "form-control" ,placeholder:"address" %><br>
-  <%= form.label :age ,class: "control-label" %><br>
-  <%= form.number_field :age ,class: "form-control" %> 年 <br>
-  <%= form.label :note ,class: "control-label" %><br>
-  <%= form.text_area :note ,class: "form-control" ,placeholder:"note" %><br>
-<br>
-
+  <%= form.label :物件名  %><br>
+  <%= form.text_field :name  ,placeholder:"name" %><br>
+  <%= form.label :賃料  %><br>
+  <%= form.number_field :rent  %>円<br>
+  <%= form.label :住所  %><br>
+  <%= form.text_field :address  ,placeholder:"address" %><br>
+  <%= form.label :築年数  %><br>
+  <%= form.number_field :age  %>年<br>
+  <%= form.label :備考  %><br>
+  <%= form.text_area :note  ,placeholder:"note" %><br>
+</div>
+    <% i = 0 %>
     <%= form.fields_for :stations do |s| %>
-      <%= s.label :route ,class: "control-label" %> <br>
+      <% i += 1 %>
+      <p><%= "最寄駅#{i}" %></p>
+      <%= s.label :路線名  %> <br>
       <%= s.text_field :route %> <br>
-      <%= s.label :name ,class: "control-label" %> <br>
+      <%= s.label :駅名  %> <br>
       <%= s.text_field :name %> <br>
-      <%= s.label :time_needed ,class: "control-label" %> <br>
-      <%= s.number_field :time_needed %> <br>
+      <%= s.label :徒歩分数  %> <br>
+      <%= s.number_field :time_needed %>分 <br>
     <% end %>
-
-
   <div class="actions">
     <% if @property.new_record? %>
-      <%= form.submit "新規投稿" ,class: "btn btn-info" %>
+      <%= form.submit "登録する"%>
     <% else %>
-      <%= form.submit "更新" ,class: "btn btn-danger" %>
+      <%= form.submit "更新する"%>
     <% end %>
+    <% binding.pry %>
+
   </div>
 <% end %>
