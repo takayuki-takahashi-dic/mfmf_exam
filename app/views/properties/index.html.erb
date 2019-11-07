@@ -45,16 +45,19 @@
       <th>name</th>
       <th>time_needed</th>
       <th>property_id</th>
+      <th>station_id</th>
     </tr>
   </  thead>
 
   <tbody>
     <% @stations.each do |station| %>
       <tr>
+
         <td><%= station.route %></td>
         <td><%= station.name %></td>
         <td><%= station.time_needed %></td>
         <td><%= station.property_id %></td>
+        <td><%= station.id %></td>
       </tr>
     <% end %>
   </tbody>
