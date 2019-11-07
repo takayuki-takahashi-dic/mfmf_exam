@@ -53,10 +53,17 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: [:id, :route, :name, :time_needed])
+    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: [:id, :route, :name, :time_needed, :_destory])
   end
   def set_property
     @property = Property.find(params[:id])
+  end
+
+  def reject_stations(attributes)
+    exists = attributes[:id].present?
+    empty = attributes[:route].blank?
+    attributes.merge!(_destroy: 1) if exists && empty
+    !exists && empty
   end
 
 end

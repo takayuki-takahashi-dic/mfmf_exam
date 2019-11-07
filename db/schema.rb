@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191105085311) do
+ActiveRecord::Schema.define(version: 20191107002821) do
 
   create_table "properties", force: :cascade do |t|
     t.string   "name",       null: false
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20191105085311) do
   end
 
   create_table "stations", force: :cascade do |t|
-    t.string   "route",       null: false
-    t.string   "name",        null: false
-    t.integer  "time_needed", null: false
+    t.string   "route"
+    t.string   "name"
+    t.integer  "time_needed"
     t.integer  "property_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
