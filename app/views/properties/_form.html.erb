@@ -1,13 +1,14 @@
-  <% if property.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(property.errors.count, "") %> 件のエラーがあります。</h2>
-        <ul>
-          <% property.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
+<% if property.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(property.errors.count, "") %>
+      件のエラーがあります。</h2>
+    <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <%= form_for @property do |form| %>
     <%= form.label :物件名  %><br>
@@ -21,9 +22,7 @@
     <%= form.label :備考  %><br>
     <%= form.text_area :note  ,placeholder:"備考" %><br><br>
 
-
-
-<div class="stations">
+    <div class="stations">
       <% i = 0 %>
       <%= form.fields_for :stations do |s| %>
         <% i += 1 %>
@@ -35,11 +34,12 @@
         <%= s.label :徒歩分数  %> <br>
         <%= s.number_field :time_needed %>分 <br>
       <% end %>
-      </div>
+    </div>
 
     <% if @property.new_record? %>
       <%= form.submit "登録する"%>
     <% else %>
       <%= form.submit "更新する"%>
     <% end %>
+
   <% end %>

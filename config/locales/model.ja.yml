@@ -10,7 +10,7 @@ ja:
         address: 住所
         age: 築年数
         note: 備考
-      station:
+      property/stations:
         route: 路線名
         name: 駅名
         time_needed: 徒歩分数
