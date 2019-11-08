@@ -1,47 +1,45 @@
   <% if property.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(property.errors.count, "") %> 件のエラーがあります。</h2>
-      <ul>
-        <% property.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-  <% end %>
-      </ul>
+        <ul>
+          <% property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
     </div>
   <% end %>
 
-<div class="property">
-<%= form_for @property do |form| %>
-  <%= form.label :物件名  %><br>
-  <%= form.text_field :name  ,placeholder:"物件名" %><br>
-  <%= form.label :賃料  %><br>
-  <%= form.number_field :rent  %>円<br>
-  <%= form.label :住所  %><br>
-  <%= form.text_field :address  ,placeholder:"住所" %><br>
-  <%= form.label :築年数  %><br>
-  <%= form.number_field :age  %>年<br>
-  <%= form.label :備考  %><br>
-  <%= form.text_area :note  ,placeholder:"備考" %><br>
-</div>
-
-<% i = 0 %>
-<%= form.fields_for :stations do |s| %>
-<% i += 1 %>
-<p><%= "最寄駅#{i}" %></p>
-<%= s.label :路線名  %> <br>
-<%= s.text_field :route %> <br>
-<%= s.label :駅名  %> <br>
-<%= s.text_field :name %> <br>
-<%= s.label :徒歩分数  %> <br>
-<%= s.number_field :time_needed %>分 <br>
-<% end %>
+  <%= form_for @property do |form| %>
+    <%= form.label :物件名  %><br>
+    <%= form.text_field :name  ,placeholder:"物件名" %><br>
+    <%= form.label :賃料  %><br>
+    <%= form.number_field :rent  %>円<br>
+    <%= form.label :住所  %><br>
+    <%= form.text_field :address  ,placeholder:"住所" %><br>
+    <%= form.label :築年数  %><br>
+    <%= form.number_field :age  %>年<br>
+    <%= form.label :備考  %><br>
+    <%= form.text_area :note  ,placeholder:"備考" %><br><br>
 
 
-  <div class="actions">
+
+<div class="stations">
+      <% i = 0 %>
+      <%= form.fields_for :stations do |s| %>
+        <% i += 1 %>
+        <p><%= "最寄駅#{i}" %></p>
+        <%= s.label :路線名  %> <br>
+        <%= s.text_field :route %> <br>
+        <%= s.label :駅名  %> <br>
+        <%= s.text_field :name %> <br>
+        <%= s.label :徒歩分数  %> <br>
+        <%= s.number_field :time_needed %>分 <br>
+      <% end %>
+      </div>
+
     <% if @property.new_record? %>
       <%= form.submit "登録する"%>
     <% else %>
       <%= form.submit "更新する"%>
     <% end %>
-
-  </div>
-<% end %>
+  <% end %>
