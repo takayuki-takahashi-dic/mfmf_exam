@@ -1,15 +1,13 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: %i(show edit update destroy)
 
   def index
     @properties = Property.all
-    @stations = Station.all
-
   end
 
   def new
     @property = Property.new
-    2.times {@property.stations.build} #n個のフォームを生成
+    2.times {@property.stations.build}
   end
 
   def show
@@ -48,11 +46,11 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: [:id, :route, :name, :time_needed, :_destory])
+    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: %i(id route name time_needed _destory))
   end
+
   def set_property
     @property = Property.find(params[:id])
   end
-
-
+  
 end

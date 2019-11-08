@@ -36,28 +36,4 @@
 
 <%= link_to '物件を登録する', new_property_path %>
 
-<!-- stationsモデル挙動確認のため　後で消す -->
-<h1>stations</h1>
-
-<table>
-    <tr>
-      <th>route</th>
-      <th>name</th>
-      <th>time_needed</th>
-      <th>property_id</th>
-      <th>station_id</th>
-    </tr>
-
-    <% @stations.each do |station| %>
-      <tr>
-
-        <td><%= station.route %></td>
-        <td><%= station.name %></td>
-        <td><%= station.time_needed %></td>
-        <td><%= station.property_id %></td>
-        <td><%= station.id %></td>
-      </tr>
-    <% end %>
-</table>
-
 </div>
