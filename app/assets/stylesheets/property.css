@@ -1,0 +1,14 @@
+.stations {
+   border-top: 1px solid;
+}
+
+.container {
+  padding: 20px 10px;
+}
+
+table {
+  table-layout: fixed;
+}
+.e {
+  width: 60px;
+}
